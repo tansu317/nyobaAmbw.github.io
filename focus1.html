@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:focus{
+            outline: 3px solid orange;
+        }
+    </style>
+    <script>
+        
+        function pindah(){
+            document.getElementById("myTextInput").focus();
+        }
+    </script>
+</head>
+<body>
+    <form action="/action_page.php">
+        <!-- First name: <input type="text" name="fname" autofocus><br> -->
+        First name: <input type="text" name="fname" tabindex="2"><br>
+        Last name: <input type="text" name="lname" tabindex="1"><br>
+        Another text: <input type="text" name="myText" id="myTextInput" tabindex="3"><br>
+        <input type="submit" tabindex="5">
+    </form>
+    
+    <button onclick="pindah()" tabindex="4">Click to Focus</button>
+      
+</body>
+</html>

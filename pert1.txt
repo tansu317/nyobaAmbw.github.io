@@ -1,0 +1,8 @@
+inline: contohnya image, span
+block: sperti p, h1
+flex: konten
+
+flex-grow: perbandingan sperti grid pd bootstrap
+flex-shrink: 
+flex-basis: memberikan width sendiri pada konten
+

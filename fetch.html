@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Just getting XHR is a mess!
+        // if (window.XMLHttpRequest) { // Mozilla, Safari, ...
+        // request = new XMLHttpRequest();
+        // } else if (window.ActiveXObject) { // IE
+        // try {
+        //     request = new ActiveXObject('Msxml2.XMLHTTP');
+        // } 
+        // catch (e) {
+        //     try {
+        //         request = new ActiveXObject('Microsoft.XMLHTTP');
+        //     } 
+        //     catch (e) {}
+        // }
+        // }
+
+        // // Open, send.
+        // request.open('GET', 'https://davidwalsh.name/ajax-endpoint', true);
+        // request.send(null);
+
+        // fetch("https://reqres.in/api/users")
+        //     .then(respon => console.log(respon))
+
+        // fetch("https://reqres.in/api/users", { method: "get" })
+        //     .then(res => res.json())
+        //     .then(data => console.log(data))
+        //     .catch(function(err){
+        //         console.log("error nichh!!!")
+        //     })
+
+        fetch('https://randomuser.me/api?results=20', {
+            method: 'get'
+        }).then(function(response) {
+            console.log("sukses");
+            return response.json();  
+        }).then(function(data) {
+            // var users = data.results;
+            // var list = document.createElement('h3');
+            // users.forEach(function(user){
+            //     var listItem = document.createElement('span');
+            //     listItem.innerHTML = user.name.first + ' ' + user.name.last + '</br>';
+            //     list.appendChild(listItem);
+            // });
+            // document.body.appendChild(list)
+            var users = data.results;
+            var table = document.createElement('table');
+            var tableHeader = table.createTHead();
+            var tableRow = tableHeader.insertRow();
+            var tableHeaderCell1 = tableRow.insertCell(0);
+            var tableHeaderCell2 = tableRow.insertCell(1);
+            tableHeaderCell1.innerHTML = "<b>First Name</b>";
+            tableHeaderCell2.innerHTML = "<b>Last Name</b>";
+            
+            var tableBody = document.createElement('tbody');
+            users.forEach(function(user){
+                var row = tableBody.insertRow();
+                var cell1 = row.insertCell(0);
+                var cell2 = row.insertCell(1);
+                cell1.innerHTML = user.name.first;
+                cell2.innerHTML = user.name.last;
+            });
+            table.appendChild(tableBody);
+            document.body.appendChild(table);
+        })
+        .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+            // Error :( exception ketika fetch gagal
+        });
+
+        // fetch('https://randomuser.me/api?results=10', {
+        //     method: 'GET'
+        // })
+        // .then(response => response.json()) //untuk mengambil response dari server dan mengubahnya menjadi format JSON; || cara lain bisa dengan .then(function(response) { return response.json(); })
+        // .then(data => { //untuk mengolah data / menampilkan data; || cara lain .then(function(data) { console.log(data) })
+        //     console.log(data); //tampilkan data di console log
+            
+        //     //tampilkan data di UI pake innerHTML
+        //     var users = data.results;
+        //     var list = document.createElement('ul');
+        //     users.forEach(function(user) {
+        //         var listItem = document.createElement('li');
+        //         listItem.innerHTML = user.name.first + ' ' + user.name.last;
+        //         list.appendChild(listItem);
+        //     });
+        // document.body.appendChild(list); 
+        // })
+        // .catch(function(err) {
+        //     console.log('Fetch Error :-S', err);
+        // });
+
+        fetch('https://randomuser.me/api', {
+            method: 'POST', 
+            mode: 'cors', 
+            redirect: 'follow',
+            headers: new Headers({
+                'Content-Type': 'text/plain'
+            })
+        }).then(function() { /* handle response */ });
+
+
+
+        // async function foo() {
+        //     let obj;
+        //     const res = await fetch('https://reqres.in/api/users')
+        //     obj = await res.json();
+        //     return obj;
+        // }
+
+        // foo().then(dt => {							//console.log(data)
+        //     for(i=0; i<dt.data.length; i++) {
+        //         // console.log(data["data"][i].email)
+        //         // console.log(data["data"][i].first_name)
+        //         // console.log(data["data"][i].last_name)
+        //         // console.log(data["data"][i].avatar)
+        //         document.getElementById("here").innerHTML += "<tr><td>"+dt.data[i].email+"</td>"
+        //         document.getElementById("here").innerHTML += "<td>"+dt.data[i].first_name+"</td>"
+        //         document.getElementById("here").innerHTML += "<td>"+dt.data[i].last_name+"</td>"
+        //         document.getElementById("here").innerHTML += "<td><img src='"+dt.data[i].avatar+"'></td></tr>"
+        //     }
+            
+        // });
+
+        // async function foo() {
+        //     let obj;
+        //     const res = await fetch('https://randomuser.me/api/?results=10')
+        //     obj = await res.json();
+        //     return obj;
+        // }
+
+        // foo().then(data => {
+        //     console.log(data.results)
+        //     // for(i=0;i<data.results.length;i++) {
+        //     //     document.getElementById("here").innerHTML += dt.data[i].first_name
+        //     //     document.getElementById("here").innerHTML += dt.data[i].email
+        //     //     document.getElementById("here").innerHTML += dt.data[i].last_name
+        //     //     document.getElementById("here").innerHTML += "<img src='"+dt.data[i].avatar+"'>"
+        //     // }
+        // });
+    </script>
+
+    
+</body>
+</html>

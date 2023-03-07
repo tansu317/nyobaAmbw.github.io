@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+          width: 300px;
+          height: 100px;
+          background-color: green;
+        }
+    </style>
+</head>
+
+
+<body id="b">
+    <h1>Touch Events</h1>
+    <p>This is a paragraph</p>
+    <h2 id="t">TES ID FOR TOUCH</h2>
+    <script>
+      document.querySelector('p').addEventListener('touchstart', f);
+      document.querySelector('p').addEventListener('touchend',f);
+      document.querySelector('p').addEventListener('touchmove',f);
+      document.getElementById("t").addEventListener('touchmove',t);
+      document.getElementById("t").addEventListener('touchend',t);
+      document.getElementById("t").addEventListener('touchstart',t);
+      document.getElementById("t").addEventListener('touchcancel',t);
+
+      const id_T = document.getElementById("b");
+
+      id_T.addEventListener("click", function(){
+        id_T.style.color = "red";
+      });
+
+      
+      function f(ev) {
+        console.log( ev.touches, ev.type );
+      }
+      function t(ev){
+        console.log( "Console == ", ev.touches, ev.type );
+      }
+    
+    </script>
+</body>
+    
+    
+</html>

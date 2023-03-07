@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // var a = 1; var a = 10
+        // console.log(a)		//no error
+        // let b = 1; 
+        // // let b = 10
+        // console.log(b)		//error! Already declared
+        // const x = 1;
+        // x = 10;		//error!
+
+        const car = {
+            model: 'Fiesta',
+            manufacturer: 'Ford',
+            fullName: function() {
+                return `${this.manufacturer} ${this.model}`
+            }
+        }
+        console.log(car.fullName()) //Ford Fiesta
+        console.log(car.model) //Fiesta	
+        console.log(car.manufacturer) //Ford
+
+        const myFunction2 = (a, b) => a * b
+        console.log(myFunction2(3,4))
+
+        //ASYNC FUNCTION
+        const doSomethingAsync = () => {
+            return new Promise(resolve => {
+                setTimeout(() => resolve('I did something'), 3000)
+            })
+        }
+
+        const doSomething = async () => {
+            console.log(await doSomethingAsync())
+        }
+
+        console.log('Before')
+        doSomething()
+        console.log('After')
+
+
+    </script>
+</head>
+<body>
+    <!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECMAScript</title>
+</head>
+<body>
+    <ul>
+        <li id="id1">Hi 1</li>
+        <li id="id2">Hi 2</li>
+        <li id="id3">Hi 3</li>
+        <li id="id4">Hi 4</li>
+        <li id="id5">Hi 5</li>
+    </ul>
+    <script>
+        for (let i=1; i<6; i++) {
+            var tag = document.getElementById('id'+i)
+            tag.onclick = function() {
+                console.log(i)
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+    
+</body>
+</html>
